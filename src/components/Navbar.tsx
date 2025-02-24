@@ -18,9 +18,10 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems = [
+  const menuItems = [
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
+    { label: "FAQ", href: "/faq" },
     { label: "Contact", href: "/contact" },
   ];
 
@@ -53,7 +54,7 @@ export default function Navbar() {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-8">
-              {navItems.map((item) => (
+              {menuItems.map((item) => (
                 <Link
                   key={item.label}
                   href={item.href}
@@ -111,7 +112,7 @@ export default function Navbar() {
       >
         <div className="py-4 px-4 border-t border-gray-100 max-h-[calc(100vh-4rem)] overflow-y-auto">
           <div className="flex flex-col gap-3">
-            {navItems.map((item) => (
+            {menuItems.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}

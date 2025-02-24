@@ -1,3 +1,5 @@
+"use client"; // Add this at the top since we're using client-side animations
+
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -8,6 +10,7 @@ import {
   BiCheckCircle,
   BiStar,
 } from "react-icons/bi";
+import { motion } from "framer-motion";
 
 export default function HeroSection() {
   // Floating elements data
@@ -57,60 +60,102 @@ export default function HeroSection() {
     },
   ];
 
+  const fadeInUp = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.5 },
+  };
+
+  const staggerContainer = {
+    animate: {
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
   return (
-    <section className="relative min-h-screen bg-white pt-16 md:pt-20">
+    <section className="relative min-h-screen bg-white pt-16 md:pt-20 -mx-4 sm:-mx-6 md:-mx-8">
       {/* Subtle Background Pattern */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white" />
 
       <div className="max-w-7xl mx-auto px-4 pt-12 md:pt-20 pb-12 relative">
         {/* Top Tag */}
-        <div className="flex justify-center mb-8 md:mb-12">
+        <motion.div
+          className="flex justify-center mb-8 md:mb-12"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+        >
           <span className="inline-flex items-center gap-2 bg-brand-primary/5 text-brand-primary px-3 md:px-4 py-1.5 md:py-2 rounded-full text-sm font-medium">
             <span className="flex h-1.5 md:h-2 w-1.5 md:w-2 rounded-full bg-brand-primary" />
             Let's get your money moving!
           </span>
-        </div>
+        </motion.div>
 
         {/* Main Content */}
-        <div className="text-center max-w-4xl mx-auto mb-12 md:mb-16">
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-gray-900 mb-4 md:mb-6">
+        <motion.div
+          className="text-center max-w-4xl mx-auto mb-12 md:mb-16"
+          variants={staggerContainer}
+          initial="initial"
+          animate="animate"
+        >
+          <motion.h1
+            variants={fadeInUp}
+            className="text-3xl sm:text-4xl md:text-6xl font-bold text-gray-900 mb-4 md:mb-6"
+          >
             Premium super app
             <br className="hidden sm:block" />
             <span className="text-brand-primary">made just for you.</span>
-          </h1>
-          <p className="text-lg md:text-xl text-gray-600 mb-6 md:mb-8 px-4">
+          </motion.h1>
+
+          <motion.p
+            variants={fadeInUp}
+            className="text-lg md:text-xl text-gray-600 mb-6 md:mb-8 px-4"
+          >
             Gain access to endless possibilities with MoyiScan. Send money, buy
             airtime, and make secure payments instantly.
-          </p>
-          <Link
-            href="#download"
-            className="inline-flex items-center gap-2 bg-brand-primary text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-medium hover:bg-brand-accent transition-all"
-          >
-            Try MoyiScan
-            <svg
-              className="w-4 h-4 md:w-5 md:h-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+          </motion.p>
+
+          <motion.div variants={fadeInUp}>
+            <Link
+              href="#download"
+              className="inline-flex items-center gap-2 bg-brand-primary text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-medium hover:bg-brand-accent transition-all"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </Link>
-        </div>
+              Try MoyiScan
+              <svg
+                className="w-4 h-4 md:w-5 md:h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </Link>
+          </motion.div>
+        </motion.div>
 
         {/* App Preview with Enhanced Floating Elements */}
-        <div className="relative max-w-lg md:max-w-2xl mx-auto">
+        <motion.div
+          className="relative max-w-lg md:max-w-2xl mx-auto"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+        >
           <div className="relative px-4 md:px-0">
-            {/* Feature Icons */}
+            {/* Feature Icons with staggered animation */}
             {floatingElements.map((element, index) => (
-              <div
+              <motion.div
                 key={index}
                 className={`absolute ${element.position} ${element.animation} z-20`}
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.6 + index * 0.1, duration: 0.4 }}
               >
                 <div className="bg-white p-2 md:p-3 rounded-lg md:rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105">
                   <div className="flex items-center gap-1.5 md:gap-2">
@@ -120,14 +165,17 @@ export default function HeroSection() {
                     </span>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
 
-            {/* Success Notifications */}
+            {/* Success Notifications with staggered animation */}
             {successIndicators.map((indicator, index) => (
-              <div
+              <motion.div
                 key={index}
                 className={`absolute ${indicator.position} ${indicator.animation} z-20`}
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1 + index * 0.1, duration: 0.4 }}
               >
                 <div className="bg-white p-2 md:p-3 rounded-lg md:rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                   <div className="flex items-center gap-1.5 md:gap-2">
@@ -142,7 +190,7 @@ export default function HeroSection() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
 
             {/* Background circles */}
@@ -163,14 +211,21 @@ export default function HeroSection() {
               </div>
             </div>
 
-            <Image
-              src="/app-mockup.png"
-              alt="MoyiScan App Interface"
-              width={800}
-              height={600}
-              className="relative z-10 rounded-xl md:rounded-2xl shadow-xl"
-              priority
-            />
+            {/* Main App Image */}
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+            >
+              <Image
+                src="/app-mockup.png"
+                alt="MoyiScan App Interface"
+                width={800}
+                height={600}
+                className="relative z-10 rounded-xl md:rounded-2xl shadow-xl"
+                priority
+              />
+            </motion.div>
 
             {/* Feature Cards */}
             <div className="hidden md:block absolute -right-12 top-10 transform rotate-6">
@@ -213,10 +268,16 @@ export default function HeroSection() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Service Icons */}
-        <div className="mt-12 md:mt-20 grid grid-cols-3 md:grid-cols-6 gap-4 md:gap-8 items-center justify-items-center opacity-60">
+        {/* Service Icons with staggered animation */}
+        <motion.div
+          className="mt-12 md:mt-20 grid grid-cols-3 md:grid-cols-6 gap-4 md:gap-8 items-center justify-items-center opacity-60"
+          variants={staggerContainer}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, amount: 0.3 }}
+        >
           {[
             "Airtime",
             "Data",
@@ -224,17 +285,21 @@ export default function HeroSection() {
             "Bank Transfer",
             "QR Payments",
             "Security",
-          ].map((service) => (
-            <div key={service} className="text-center">
+          ].map((service, index) => (
+            <motion.div
+              key={service}
+              variants={fadeInUp}
+              className="text-center"
+            >
               <div className="w-8 h-8 md:w-12 md:h-12 mx-auto mb-2 bg-brand-primary/10 rounded-full flex items-center justify-center">
                 <span className="text-brand-primary text-xs md:text-sm font-medium">
                   {service[0]}
                 </span>
               </div>
               <p className="text-xs md:text-sm text-gray-600">{service}</p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

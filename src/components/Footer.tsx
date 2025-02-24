@@ -37,11 +37,12 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-gray-50 border-t border-gray-100">
+    <footer className="bg-gray-50 border-t border-gray-100 -mx-4 sm:-mx-6 md:-mx-8">
       <div className="max-w-7xl mx-auto px-4 py-12 md:py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-8 mb-12 md:mb-16">
-          {/* Brand Column */}
-          <div className="col-span-1 sm:col-span-2 md:col-span-3">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 gap-8 mb-12 md:mb-16">
+          {/* Brand Column - Full width on mobile */}
+          <div className="text-center md:text-left">
             <Link
               href="/"
               className="inline-flex items-center gap-2 md:gap-3 mb-4 md:mb-6"
@@ -61,7 +62,7 @@ export default function Footer() {
             <p className="text-gray-600 text-sm mb-4 md:mb-6">
               Making digital payments simple, fast, and secure for everyone.
             </p>
-            <div className="flex gap-3 md:gap-4">
+            <div className="flex justify-center md:justify-start gap-3 md:gap-4">
               {socialLinks.map((link, index) => (
                 <a
                   key={index}
@@ -74,35 +75,37 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Links Columns */}
-          {Object.entries(footerLinks).map(([title, links]) => (
-            <div key={title} className="col-span-1 sm:col-span-1 md:col-span-3">
-              <h3 className="font-semibold text-gray-900 mb-3 md:mb-4">
-                {title}
-              </h3>
-              <ul className="space-y-2 md:space-y-3">
-                {links.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-gray-600 hover:text-brand-primary transition-colors duration-300 text-sm md:text-base"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {/* Links Grid - 2 columns on mobile, 3 on tablet+ */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+            {Object.entries(footerLinks).map(([title, links]) => (
+              <div key={title}>
+                <h3 className="font-semibold text-gray-900 mb-3 md:mb-4">
+                  {title}
+                </h3>
+                <ul className="space-y-2 md:space-y-3">
+                  {links.map((link) => (
+                    <li key={link.label}>
+                      <Link
+                        href={link.href}
+                        className="text-gray-600 hover:text-brand-primary transition-colors duration-300 text-sm md:text-base"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Bottom Bar */}
         <div className="pt-6 md:pt-8 border-t border-gray-200">
-          <div className="flex flex-col-reverse md:flex-row justify-between items-center gap-6 md:gap-4">
-            <p className="text-gray-600 text-sm text-center md:text-left">
+          <div className="flex flex-col gap-6 md:flex-row md:justify-between md:items-center">
+            <p className="text-gray-600 text-sm text-center md:text-left order-2 md:order-1">
               © {new Date().getFullYear()} MoyiScan. All rights reserved.
             </p>
-            <div className="flex items-center gap-4 flex-wrap justify-center">
+            <div className="flex items-center gap-4 justify-center md:justify-start order-1 md:order-2">
               <Image
                 src="/app-store-badge.png"
                 alt="Download on App Store"

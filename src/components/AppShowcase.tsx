@@ -1,6 +1,48 @@
+"use client";
+
 import Image from "next/image";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 export default function AppShowcase() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
+
+  const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
+
+  const slideInLeft = {
+    hidden: { opacity: 0, x: -50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
+
+  const slideInRight = {
+    hidden: { opacity: 0, x: 50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
+
+  const scaleIn = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
   const features = [
     {
       title: "Quick VTU Services",
@@ -20,36 +62,60 @@ export default function AppShowcase() {
   ];
 
   return (
-    <section className="py-24 px-4 bg-gray-50">
+    <section className="py-24 bg-gray-50 -mx-4 sm:-mx-6 md:-mx-8">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <span className="text-brand-primary font-medium">How It Works</span>
-          <h2 className="text-4xl font-bold mt-4 mb-6">
+        <motion.div
+          ref={ref}
+          className="text-center mb-16"
+          variants={scaleIn}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
+          <motion.span
+            className="text-brand-primary font-medium"
+            variants={fadeIn}
+          >
+            How It Works
+          </motion.span>
+          <motion.h2 className="text-4xl font-bold mt-4 mb-6" variants={fadeIn}>
             Everything at your fingertips
-          </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p
+            className="text-gray-600 max-w-2xl mx-auto"
+            variants={fadeIn}
+          >
             MoyiScan brings all your financial needs into one simple, secure
             app. Here&apos;s what you can do:
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         <div className="space-y-24">
           {features.map((feature, index) => (
-            <div
+            <motion.div
               key={index}
               className={`flex items-center gap-12 ${
                 index % 2 === 1 ? "flex-row-reverse" : ""
               }`}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={{
+                visible: { transition: { staggerChildren: 0.2 } },
+              }}
             >
-              <div className="flex-1 space-y-4">
+              <motion.div
+                className="flex-1 space-y-4"
+                variants={index % 2 === 0 ? slideInLeft : slideInRight}
+              >
                 <h3 className="text-2xl font-bold text-brand-primary">
                   {feature.title}
                 </h3>
                 <p className="text-gray-600">{feature.description}</p>
                 <ul className="space-y-2">
                   {[1, 2, 3].map((item) => (
-                    <li
+                    <motion.li
                       key={item}
+                      variants={fadeIn}
                       className="flex items-center gap-2 text-gray-600"
                     >
                       <svg
@@ -64,11 +130,15 @@ export default function AppShowcase() {
                         />
                       </svg>
                       <span>Feature point {item}</span>
-                    </li>
+                    </motion.li>
                   ))}
                 </ul>
-              </div>
-              <div className="flex-1 relative">
+              </motion.div>
+
+              <motion.div
+                className="flex-1 relative"
+                variants={index % 2 === 0 ? slideInRight : slideInLeft}
+              >
                 <div className="absolute inset-0 bg-gradient-to-tr from-brand-primary/10 to-brand-secondary/10 rounded-[2rem] blur-2xl" />
                 <Image
                   src={feature.image}
@@ -77,8 +147,8 @@ export default function AppShowcase() {
                   height={300}
                   className="relative rounded-2xl shadow-xl border border-white/20"
                 />
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           ))}
         </div>
       </div>

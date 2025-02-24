@@ -1,3 +1,5 @@
+"use client";
+
 import {
   BiRocket,
   BiShieldAlt2,
@@ -8,8 +10,13 @@ import {
   BiWallet,
   BiCheckShield,
 } from "react-icons/bi";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 export default function Features() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
+
   const features = [
     {
       icon: <BiRocket className="w-6 h-6 md:w-8 md:h-8" />,
@@ -53,14 +60,47 @@ export default function Features() {
     },
   ];
 
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
+  const scaleIn = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
+  };
+
+  const staggerContainer = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
   return (
-    <section className="py-12 md:py-24 bg-white relative overflow-hidden">
+    <section className="py-12 md:py-24 bg-white relative overflow-hidden -mx-4 sm:-mx-6 md:-mx-8">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-30" />
 
       <div className="max-w-7xl mx-auto px-4 relative">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-20">
+        <motion.div
+          ref={ref}
+          className="text-center max-w-3xl mx-auto mb-12 md:mb-20"
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={scaleIn}
+        >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 md:mb-6">
             Why Choose MoyiScan?
           </h2>
@@ -69,13 +109,19 @@ export default function Features() {
             features designed to make your financial transactions seamless and
             secure.
           </p>
-        </div>
+        </motion.div>
 
         {/* Features Grid - Now 4 columns on larger screens */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <motion.div
+          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={staggerContainer}
+        >
           {features.map((item, index) => (
-            <div
+            <motion.div
               key={index}
+              variants={fadeInUp}
               className="group bg-gray-50 hover:bg-white p-6 rounded-2xl transition-all duration-300 hover:shadow-xl border border-gray-100"
             >
               <div className="flex flex-col items-center text-center">
@@ -91,9 +137,9 @@ export default function Features() {
                   <p className="text-sm text-gray-600">{item.desc}</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Decorative Elements */}
         <div className="absolute -left-4 -top-4 w-32 h-32 bg-brand-primary/20 rounded-full blur-2xl" />

@@ -1,28 +1,68 @@
+"use client";
+
 import Link from "next/link";
 import { BiGroup, BiMoney, BiStar } from "react-icons/bi";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 export default function AboutPreview() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
+
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
+  const staggerChildren = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
   return (
-    <section className="relative py-24 overflow-hidden">
+    <section className="relative py-24 overflow-hidden -mx-4 sm:-mx-6 md:-mx-8">
       {/* Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-brand-primary via-brand-dark to-brand-primary/90" />
 
       <div className="max-w-7xl mx-auto px-4 relative">
         {/* Content - Now centered and full width */}
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+        <motion.div
+          ref={ref}
+          className="max-w-4xl mx-auto text-center"
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={staggerChildren}
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="text-4xl lg:text-5xl font-bold text-white mb-6"
+          >
             Transforming Digital
             <br /> Payments in Africa
-          </h2>
+          </motion.h2>
 
-          <p className="text-lg text-white/90 mb-12 max-w-2xl mx-auto">
+          <motion.p
+            variants={fadeInUp}
+            className="text-lg text-white/90 mb-12 max-w-2xl mx-auto"
+          >
             We&apos;re building the future of digital payments, making
             transactions faster, safer, and more accessible for everyone across
             Africa.
-          </p>
+          </motion.p>
 
           {/* Stats Grid - Now 3 columns by default */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4">
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4"
+            variants={staggerChildren}
+          >
             {[
               {
                 value: "2M+",
@@ -40,8 +80,9 @@ export default function AboutPreview() {
                 icon: <BiStar className="w-6 h-6" />,
               },
             ].map((stat, index) => (
-              <div
+              <motion.div
                 key={index}
+                variants={fadeInUp}
                 className="bg-white/10 backdrop-blur-sm p-6 rounded-xl text-white group hover:bg-white/20 transition-colors duration-300"
               >
                 <div className="flex items-center justify-center gap-3 mb-2">
@@ -53,12 +94,12 @@ export default function AboutPreview() {
                 <div className="text-white/80 group-hover:text-white transition-colors duration-300">
                   {stat.label}
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* CTA Button */}
-          <div className="mt-12">
+          <motion.div variants={fadeInUp} className="mt-12">
             <Link
               href="/about"
               className="inline-flex items-center gap-2 bg-white text-brand-primary px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition-colors duration-300"
@@ -78,8 +119,8 @@ export default function AboutPreview() {
                 />
               </svg>
             </Link>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Decorative Elements - Repositioned */}
         <div className="absolute -right-4 -bottom-4 w-32 h-32 bg-brand-secondary/40 rounded-full blur-2xl animate-pulse-slow" />

@@ -63,7 +63,6 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-brand-primary via-brand-dark to-brand-primary/90" />
-        <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-20" />
 
         <div className="max-w-7xl mx-auto px-4 relative">
           <div className="text-center text-white">
@@ -163,19 +162,21 @@ export default function AboutPage() {
               The milestones that have shaped our growth
             </p>
           </div>
-          <div className="relative">
+
+          {/* Timeline for Desktop */}
+          <div className="hidden md:block relative">
             <div className="absolute left-1/2 -translate-x-px h-full w-0.5 bg-gray-200" />
             <div className="space-y-12">
               {milestones.map((milestone, index) => (
                 <div
                   key={index}
                   className={`relative flex items-center gap-8 ${
-                    index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                    index % 2 === 0 ? "flex-row" : "flex-row-reverse"
                   }`}
                 >
-                  <div className="flex-1 md:w-1/2" />
+                  <div className="flex-1 w-1/2" />
                   <div className="absolute left-1/2 -translate-x-1/2 w-8 h-8 bg-brand-primary rounded-full border-4 border-white" />
-                  <div className="flex-1 md:w-1/2 bg-white p-6 rounded-xl shadow-lg">
+                  <div className="flex-1 w-1/2 bg-white p-6 rounded-xl shadow-lg">
                     <div className="text-brand-primary font-bold mb-2">
                       {milestone.year}
                     </div>
@@ -184,6 +185,37 @@ export default function AboutPage() {
                     </h3>
                     <p className="text-gray-600">{milestone.description}</p>
                   </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Timeline for Mobile - Infographic Style */}
+          <div className="md:hidden relative">
+            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-brand-primary/20" />
+            <div className="space-y-8">
+              {milestones.map((milestone, index) => (
+                <div key={index} className="relative flex gap-6 pl-16">
+                  {/* Year Circle */}
+                  <div className="absolute left-6 -translate-x-1/2 w-4 h-4 rounded-full bg-brand-primary border-4 border-white shadow-md" />
+
+                  {/* Year Label */}
+                  <div className="absolute left-0 translate-y-1 text-sm font-bold text-brand-primary">
+                    {milestone.year}
+                  </div>
+
+                  {/* Content Card */}
+                  <div className="flex-1 bg-white p-4 rounded-xl shadow-md border border-gray-100">
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">
+                      {milestone.title}
+                    </h3>
+                    <p className="text-sm text-gray-600">
+                      {milestone.description}
+                    </p>
+                  </div>
+
+                  {/* Connecting Line */}
+                  <div className="absolute left-8 top-2 w-8 h-px bg-brand-primary/20" />
                 </div>
               ))}
             </div>
