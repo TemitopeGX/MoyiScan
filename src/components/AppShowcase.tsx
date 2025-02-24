@@ -29,7 +29,7 @@ export default function AppShowcase() {
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             MoyiScan brings all your financial needs into one simple, secure
-            app. Here's what you can do:
+            app. Here&apos;s what you can do:
           </p>
         </div>
 

@@ -85,7 +85,7 @@ export default function AboutPage() {
                 Our Mission
               </h2>
               <p className="text-lg text-gray-600 mb-8">
-                At MoyiScan, we're on a mission to make digital payments
+                We&apos;re on a mission to transform digital payments
                 accessible, efficient, and secure for everyone. We believe in
                 the power of technology to transform lives and businesses across
                 Africa.

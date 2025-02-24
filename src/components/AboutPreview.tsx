@@ -16,8 +16,9 @@ export default function AboutPreview() {
           </h2>
 
           <p className="text-lg text-white/90 mb-12 max-w-2xl mx-auto">
-            We're building the future of digital payments, making transactions
-            faster, safer, and more accessible for everyone across Africa.
+            We&apos;re building the future of digital payments, making
+            transactions faster, safer, and more accessible for everyone across
+            Africa.
           </p>
 
           {/* Stats Grid - Now 3 columns by default */}

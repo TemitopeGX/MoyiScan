@@ -5,7 +5,6 @@ import {
   BiMobile,
   BiShield,
   BiChart,
-  BiMoney,
   BiCheckCircle,
   BiStar,
 } from "react-icons/bi";
