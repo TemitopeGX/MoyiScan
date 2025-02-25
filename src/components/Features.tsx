@@ -89,10 +89,10 @@ export default function Features() {
 
   return (
     <section className="py-12 md:py-24 bg-white relative overflow-hidden -mx-4 sm:-mx-6 md:-mx-8">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-30" />
-
       <div className="max-w-7xl mx-auto px-4 relative">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-30" />
+
         {/* Section Header */}
         <motion.div
           ref={ref}

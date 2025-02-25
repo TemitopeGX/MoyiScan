@@ -38,14 +38,13 @@ export default function AppDownload() {
   return (
     <section
       id="download"
-      className="relative py-12 md:py-24 overflow-hidden -mx-4 sm:-mx-6 md:-mx-8"
+      className="relative py-16 md:py-20 overflow-hidden -mx-4 sm:-mx-6 md:-mx-8"
     >
       {/* Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-brand-primary via-brand-dark to-brand-primary/90" />
-      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-20" />
 
-      <div className="max-w-7xl mx-auto px-4 relative z-20">
-        <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
+      <div className="max-w-7xl mx-auto px-6 relative z-20">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <motion.div
             ref={ref}
@@ -58,32 +57,32 @@ export default function AppDownload() {
           >
             <motion.div
               variants={fadeIn}
-              className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-white/10 text-white mb-6 md:mb-8 backdrop-blur-sm"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white mb-8 backdrop-blur-sm"
             >
-              <BiDownload className="w-4 h-4 md:w-5 md:h-5" />
+              <BiDownload className="w-5 h-5" />
               <span className="text-sm">Download App</span>
             </motion.div>
 
             <motion.h2
               variants={slideUp}
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6"
+              className="text-4xl lg:text-5xl font-bold text-white mb-6"
             >
-              Get Started with
-              <span className="text-brand-secondary"> MoyiScan</span>
+              Get Started with{" "}
+              <span className="text-brand-secondary">MoyiScan</span>
             </motion.h2>
 
             <motion.p
               variants={slideUp}
-              className="text-base md:text-lg text-white/90 mb-8 md:mb-12"
+              className="text-lg text-white/90 mb-12 max-w-xl"
             >
               Download our mobile app and experience the future of digital
               payments. Available on iOS and Android devices.
             </motion.p>
 
             {/* Download Options */}
-            <motion.div variants={slideUp} className="space-y-6 md:space-y-8">
+            <motion.div variants={slideUp} className="space-y-8">
               {/* Store Badges */}
-              <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center lg:justify-start">
+              <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
                 <motion.a
                   href="#"
                   className="transform hover:scale-105 transition-transform duration-300"
@@ -94,7 +93,7 @@ export default function AppDownload() {
                     alt="Download on App Store"
                     width={200}
                     height={60}
-                    className="h-[45px] md:h-[60px] w-auto"
+                    className="h-[60px] w-auto"
                   />
                 </motion.a>
 
@@ -108,7 +107,7 @@ export default function AppDownload() {
                     alt="Get it on Google Play"
                     width={200}
                     height={60}
-                    className="h-[45px] md:h-[60px] w-auto"
+                    className="h-[60px] w-auto"
                   />
                 </motion.a>
               </div>
@@ -116,9 +115,9 @@ export default function AppDownload() {
               {/* QR Code Section */}
               <motion.div
                 variants={fadeIn}
-                className="flex items-center justify-center lg:justify-start gap-4 md:gap-6 p-4 md:p-6 bg-white/10 backdrop-blur-sm rounded-xl md:rounded-2xl max-w-md"
+                className="flex items-center justify-center lg:justify-start gap-6 p-6 bg-white/10 backdrop-blur-sm rounded-2xl max-w-md"
               >
-                <div className="w-20 h-20 md:w-24 md:h-24 bg-white rounded-lg md:rounded-xl overflow-hidden">
+                <div className="w-24 h-24 bg-white rounded-xl overflow-hidden">
                   <Image
                     src="/qr-code.png"
                     alt="Download App QR Code"
@@ -128,10 +127,10 @@ export default function AppDownload() {
                   />
                 </div>
                 <div>
-                  <h3 className="text-base md:text-lg font-semibold text-white mb-1 md:mb-2">
+                  <h3 className="text-lg font-semibold text-white mb-2">
                     Scan to Download
                   </h3>
-                  <p className="text-sm md:text-base text-white/80">
+                  <p className="text-base text-white/80">
                     Point your camera at the QR code to download the app
                     instantly
                   </p>
@@ -148,38 +147,38 @@ export default function AppDownload() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-white/5 rounded-[2rem] md:rounded-[3rem] blur-2xl" />
+            <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-white/5 rounded-[3rem] blur-2xl" />
             <div className="relative">
               <Image
                 src="/app-preview-download.png"
                 alt="MoyiScan App Preview"
                 width={500}
                 height={1000}
-                className="mx-auto rounded-[1.5rem] md:rounded-[2rem] shadow-2xl max-w-xs md:max-w-sm lg:max-w-none"
+                className="mx-auto rounded-[2rem] shadow-2xl max-w-sm lg:max-w-none"
               />
 
               {/* Feature Highlights */}
               <motion.div
-                className="absolute -right-4 md:-right-12 top-1/4 transform rotate-6"
+                className="absolute -right-12 top-1/4 transform rotate-6"
                 variants={fadeIn}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.5 }}
               >
-                <div className="bg-white/10 backdrop-blur-md p-3 md:p-4 rounded-xl shadow-lg">
-                  <BiMobile className="w-6 h-6 md:w-8 md:h-8 text-white" />
+                <div className="bg-white/10 backdrop-blur-md p-4 rounded-xl shadow-lg">
+                  <BiMobile className="w-8 h-8 text-white" />
                 </div>
               </motion.div>
 
               <motion.div
-                className="absolute -left-4 md:-left-12 bottom-1/4 transform -rotate-6"
+                className="absolute -left-12 bottom-1/4 transform -rotate-6"
                 variants={fadeIn}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.5 }}
               >
-                <div className="bg-white/10 backdrop-blur-md p-3 md:p-4 rounded-xl shadow-lg">
-                  <BiQr className="w-6 h-6 md:w-8 md:h-8 text-white" />
+                <div className="bg-white/10 backdrop-blur-md p-4 rounded-xl shadow-lg">
+                  <BiQr className="w-8 h-8 text-white" />
                 </div>
               </motion.div>
             </div>
