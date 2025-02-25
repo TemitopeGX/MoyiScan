@@ -60,7 +60,7 @@ export default function AboutPreview() {
 
           {/* Stats Grid - Now 3 columns by default */}
           <motion.div
-            className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4 mx-4 sm:mx-0"
             variants={staggerChildren}
           >
             {[

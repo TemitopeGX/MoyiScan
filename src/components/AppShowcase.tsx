@@ -62,11 +62,11 @@ export default function AppShowcase() {
   ];
 
   return (
-    <section className="py-24 bg-gray-50 -mx-4 sm:-mx-6 md:-mx-8">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-20 md:py-24 bg-gray-50 -mx-4 sm:-mx-6 md:-mx-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 py-10 sm:py-16">
         <motion.div
           ref={ref}
-          className="text-center mb-16"
+          className="text-center mb-20 px-4"
           variants={scaleIn}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
@@ -81,7 +81,7 @@ export default function AppShowcase() {
             Everything at your fingertips
           </motion.h2>
           <motion.p
-            className="text-gray-600 max-w-2xl mx-auto"
+            className="text-gray-600 max-w-2xl mx-auto px-4"
             variants={fadeIn}
           >
             MoyiScan brings all your financial needs into one simple, secure
@@ -89,13 +89,13 @@ export default function AppShowcase() {
           </motion.p>
         </motion.div>
 
-        <div className="space-y-24">
+        <div className="space-y-32">
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              className={`flex items-center gap-12 ${
-                index % 2 === 1 ? "flex-row-reverse" : ""
-              }`}
+              className={`flex flex-col ${
+                index % 2 === 1 ? "lg:flex-row-reverse" : "lg:flex-row"
+              } items-center gap-12 md:gap-16 lg:gap-20`}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
@@ -104,39 +104,37 @@ export default function AppShowcase() {
               }}
             >
               <motion.div
-                className="flex-1 space-y-4"
+                className="flex-1 space-y-6 text-center lg:text-left px-6 sm:px-0"
                 variants={index % 2 === 0 ? slideInLeft : slideInRight}
               >
                 <h3 className="text-2xl font-bold text-brand-primary">
                   {feature.title}
                 </h3>
                 <p className="text-gray-600">{feature.description}</p>
-                <ul className="space-y-2">
-                  {[1, 2, 3].map((item) => (
-                    <motion.li
-                      key={item}
-                      variants={fadeIn}
-                      className="flex items-center gap-2 text-gray-600"
-                    >
-                      <svg
-                        className="w-5 h-5 text-brand-primary"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
+                <div className="px-4 sm:px-0">
+                  <ul className="space-y-4 bg-white/50 p-6 rounded-xl">
+                    {[
+                      { value: "2M+", label: "Active Users" },
+                      { value: "₦5B+", label: "Monthly Transactions" },
+                      { value: "4.8/5", label: "User Rating" },
+                    ].map((stat, idx) => (
+                      <motion.li
+                        key={idx}
+                        variants={fadeIn}
+                        className="flex items-center justify-between gap-4 p-4 bg-white rounded-lg shadow-sm"
                       >
-                        <path
-                          fillRule="evenodd"
-                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      <span>Feature point {item}</span>
-                    </motion.li>
-                  ))}
-                </ul>
+                        <span className="text-gray-600">{stat.label}</span>
+                        <span className="text-lg font-semibold text-brand-primary">
+                          {stat.value}
+                        </span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
               </motion.div>
 
               <motion.div
-                className="flex-1 relative"
+                className="flex-1 relative px-6 sm:px-0"
                 variants={index % 2 === 0 ? slideInRight : slideInLeft}
               >
                 <div className="absolute inset-0 bg-gradient-to-tr from-brand-primary/10 to-brand-secondary/10 rounded-[2rem] blur-2xl" />
