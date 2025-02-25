@@ -1,136 +1,150 @@
-# MoyiScan - Digital Payment Super App
-
 <div align="center">
   <img src="/public/logo.png" alt="MoyiScan Logo" width="200"/>
-  <p>Building the future of digital payments in Africa 🌍</p>
+  
+  # MoyiScan - Digital Payment Super App
+  
+  <p align="center">
+    A cutting-edge payment platform revolutionizing digital transactions in Africa 🌍
+  </p>
+
+  <p align="center">
+    <a href="#demo">View Demo</a>
+    ·
+    <a href="#installation">Installation</a>
+    ·
+    <a href="#documentation">Documentation</a>
+    ·
+    <a href="https://github.com/username/moyiscan/issues">Report Bug</a>
+  </p>
+
+  <div align="center">
+    <img src="https://img.shields.io/github/license/username/moyiscan?style=flat-square" alt="License"/>
+    <img src="https://img.shields.io/github/last-commit/username/moyiscan?style=flat-square" alt="Last Commit"/>
+    <img src="https://img.shields.io/github/deployments/username/moyiscan/Production?style=flat-square&label=deployment" alt="Deployment"/>
+    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome"/>
+  </div>
 </div>
 
-## 🚀 Overview
+<br />
 
-MoyiScan is a cutting-edge digital payment platform designed to transform financial transactions in Africa. Our super app combines multiple payment services into one seamless experience, making digital payments more accessible, efficient, and secure for everyone.
+## ✨ Features
 
-### ✨ Key Features
+- 💸 **Instant Transfers** - Send money to any bank instantly
+- 📱 **VTU Services** - Quick airtime and data top-ups
+- 💳 **Bill Payments** - Pay utilities and services seamlessly
+- 🔒 **Secure** - Bank-grade security protocols
+- 📊 **Analytics** - Real-time transaction tracking
+- 📱 **Cross Platform** - Works on all devices
 
-- **Quick VTU Services**: Instant airtime and data bundle top-ups
-- **Bank Transfers**: Seamless money transfers to any bank
-- **Bill Payments**: Easy utility and service payments
-- **QR Payments**: Contactless payments via QR code
-- **Secure Transactions**: Bank-grade security protocols
-- **Real-time Analytics**: Track your spending patterns
+## 🛠 Built With
 
-## 🛠 Tech Stack
+<div align="center">
+  
+![Next.js](https://img.shields.io/badge/Next.js_14-black?style=for-the-badge&logo=next.js&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Framer](https://img.shields.io/badge/Framer_Motion-black?style=for-the-badge&logo=framer&logoColor=blue)
+![React](https://img.shields.io/badge/React_Icons-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 
-- **Frontend**: Next.js 14 (App Router)
-- **Styling**: Tailwind CSS
-- **Animations**: Framer Motion
-- **Icons**: React Icons
-- **Type Safety**: TypeScript
-- **Code Quality**: ESLint, Prettier
-- **Deployment**: Vercel
+![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)
+![Prettier](https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=black)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
-## 📦 Installation
+</div>
 
-1. Clone the repository:
+## 📊 Quick Stats
+
+<div align="center">
+  <img src="https://img.shields.io/badge/Active_Users-2M+-blue?style=for-the-badge" alt="Users"/>
+  <img src="https://img.shields.io/badge/Monthly_Transactions-₦5B+-green?style=for-the-badge" alt="Transactions"/>
+  <img src="https://img.shields.io/badge/User_Rating-4.8/5-yellow?style=for-the-badge" alt="Rating"/>
+  <img src="https://img.shields.io/badge/Uptime-99.9%25-brightgreen?style=for-the-badge" alt="Uptime"/>
+</div>
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+- Git
+
+### Installation
+
+1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/moyiscan.git
+git clone https://github.com/username/moyiscan.git
 ```
 
-2. Install dependencies:
+2. Install dependencies
 
 ```bash
 cd moyiscan
 npm install
 ```
 
-3. Create a `.env.local` file:
+3. Set up environment variables
 
 ```bash
 cp .env.example .env.local
 ```
 
-4. Start the development server:
+4. Start the development server
 
 ```bash
 npm run dev
 ```
 
-Visit `http://localhost:3000` to see the app.
+Visit `http://localhost:3000` to view the application.
 
-## 🏗 Project Structure
+## 📁 Project Structure
 
 ```
 moyiscan/
 ├── src/
-│   ├── app/                 # App router pages
-│   ├── components/          # Reusable components
+│   ├── app/                 # Next.js app router pages
+│   ├── components/          # Reusable UI components
+│   ├── lib/                 # Utility functions & helpers
 │   ├── styles/             # Global styles
-│   └── types/              # TypeScript types
+│   └── types/              # TypeScript definitions
 ├── public/                 # Static assets
-├── tailwind.config.ts     # Tailwind configuration
-└── package.json           # Project dependencies
+├── tests/                 # Test files
+└── README.md
 ```
 
-## 🧪 Running Tests
+## 📱 Responsive Design
 
-```bash
-# Run unit tests
-npm run test
+Fully optimized for:
 
-# Run e2e tests
-npm run test:e2e
-```
-
-## 🚀 Deployment
-
-The app is automatically deployed to Vercel on every push to the main branch. You can also deploy manually:
-
-```bash
-npm run build
-npm run start
-```
-
-## 📱 Mobile Responsiveness
-
-The app is fully responsive and optimized for:
-
-- Mobile devices (320px and up)
-- Tablets (768px and up)
-- Desktops (1024px and up)
-- Large screens (1280px and up)
+- 📱 Mobile `320px+`
+- 📱 Tablet `768px+`
+- 💻 Desktop `1024px+`
+- 🖥️ Large Screens `1280px+`
 
 ## 🤝 Contributing
 
+Contributions are welcome! Please check our [Contributing Guidelines](CONTRIBUTING.md).
+
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a pull request
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
-
-## 📊 Stats
-
-- **Active Users**: 2M+
-- **Monthly Transactions**: ₦5B+
-- **User Rating**: 4.8/5
-- **Uptime**: 99.9%
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
 
 ## 🙏 Acknowledgments
 
-- [Next.js Documentation](https://nextjs.org/docs)
+- [Next.js](https://nextjs.org)
 - [Tailwind CSS](https://tailwindcss.com)
 - [Framer Motion](https://www.framer.com/motion)
 - [React Icons](https://react-icons.github.io/react-icons)
 
-## 📞 Support
-
-For support, email support@moyiscan.com or join our Slack channel.
-
 ---
 
 <div align="center">
-  Made with ❤️ by the MoyiScan Team
+  <sub>Built with ⚡️ by <a href="https://github.com/TemitopeGX">TemitopeGX</a></sub>
 </div>
